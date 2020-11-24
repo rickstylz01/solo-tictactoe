@@ -2,11 +2,39 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 class Square extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selected: null,
+    }
+  }
+
+  applySelectedCharacter = () => {
+
+  }
+
+  handleCrossClick = () => {
+    if(null) {
+      this.setState = 'X';
+    }
+  }
+
+  handleCircleClick = () => {
+    if(null) {
+      this.setState = 'O'
+    }
+  }
+
   render() {
     return (
-      <button className="square">
-        {/* TODO */}
-      </button>
+      <div>
+        <button className="cross" onClick={this.handleCrossClick}>
+          x
+        </button>
+        <button className="circle" onClick={this.handleCircleClick}>
+          o
+        </button>
+      </div>
     );
   }
 }
@@ -18,27 +46,30 @@ class Board extends React.Component {
 
   render() {
     const status = 'Next player: X';
-
+    
     return (
-      <table className="table table-bordered ">
-        <tbody>
-          <tr>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td>Larry the Bird</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-          </tr>
-        </tbody>
-      </table>
+      <div>
+        <div className="status">{status}</div>
+        <table className="table table-bordered table-dark">
+          <tbody>
+            <tr>
+              <td><Square /></td>
+              <td>2</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>8</td>
+              <td>9</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     );
   }
 }
