@@ -10,30 +10,14 @@ class Square extends React.Component {
   }
 
   applySelectedCharacter = () => {
-
-  }
-
-  handleCrossClick = () => {
-    if(null) {
-      this.setState = 'X';
-    }
-  }
-
-  handleCircleClick = () => {
-    if(null) {
-      this.setState = 'O'
-    }
+    
   }
 
   render() {
     return (
       <div>
-        <button className="cross" onClick={this.handleCrossClick}>
-          x
-        </button>
-        <button className="circle" onClick={this.handleCircleClick}>
-          o
-        </button>
+        <button className="cross" onClick={() => this.setState({ selected: 'X' })}>X</button>
+        <button className="circle" onClick={() => this.setState({ selected: 'O' })}>O</button>
       </div>
     );
   }
@@ -54,18 +38,18 @@ class Board extends React.Component {
           <tbody>
             <tr>
               <td><Square /></td>
-              <td>2</td>
-              <td>3</td>
+              <td><Square /></td>
+              <td><Square /></td>
             </tr>
             <tr>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
+              <td><Square /></td>
+              <td><Square /></td>
+              <td><Square /></td>
             </tr>
             <tr>
-              <td>7</td>
-              <td>8</td>
-              <td>9</td>
+              <td><Square /></td>
+              <td><Square /></td>
+              <td><Square /></td>
             </tr>
           </tbody>
         </table>
