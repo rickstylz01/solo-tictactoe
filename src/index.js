@@ -1,31 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-class Square extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selected: null,
-    }
-  }
-
-  applySelectedCharacter = () => {
-    
-  }
-
-  render() {
-    return (
-      <div>
-        <button className="cross" onClick={() => this.setState({ selected: 'X' })}>X</button>
-        <button className="circle" onClick={() => this.setState({ selected: 'O' })}>O</button>
-      </div>
-    );
-  }
+//function component instead of stateless class
+function Square(props) {
+  return (
+    <button onclick={props.onClick}>
+      {props.value}
+    </button>
+  )
 }
 
 class Board extends React.Component {
+  constructor(props) {
+    super(props); 
+    this.state = {
+      squares: Array(9).fill(null),
+      xIsNext: true,
+    };
+  }
+
+  handleClick(i) {
+    const squares = this.state.squares.slice();
+    squares[i] = this.state.xIsNext ? 'X' : 'O';
+    this.setState({squares: squares});
+    xIsNext: !this.state.xIsNext,
+  }
+
   renderSquare(i) {
-    return <Square />;
+    return (
+      <Square
+        value={this.state.squares[i]}
+        onClick={() => this.handleClick(i)}
+      />
+    ); 
   }
 
   render() {
@@ -37,19 +44,19 @@ class Board extends React.Component {
         <table className="table table-bordered table-dark">
           <tbody>
             <tr>
-              <td><Square /></td>
-              <td><Square /></td>
-              <td><Square /></td>
+              <td>{this.renderSquare(1)}</td>
+              <td>{this.renderSquare(2)}</td>
+              <td>{this.renderSquare(3)}</td>
             </tr>
             <tr>
-              <td><Square /></td>
-              <td><Square /></td>
-              <td><Square /></td>
+              <td>{this.renderSquare(4)}</td>
+              <td>{this.renderSquare(5)}</td>
+              <td>{this.renderSquare(6)}</td>
             </tr>
             <tr>
-              <td><Square /></td>
-              <td><Square /></td>
-              <td><Square /></td>
+              <td>{this.renderSquare(7)}</td>
+              <td>{this.renderSquare(8)}</td>
+              <td>{this.renderSquare(9)}</td>
             </tr>
           </tbody>
         </table>
